@@ -38,7 +38,7 @@ public class JmsConfig {
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 		factory.setConnectionFactory(activeMQConnectionFactory());
 		factory.setPubSubDomain(true);
-		factory.setSubscriptionDurable(true);
+		factory.setSubscriptionDurable(false);
 
 		return factory;
 	}
