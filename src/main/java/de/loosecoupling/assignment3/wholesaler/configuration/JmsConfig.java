@@ -1,5 +1,6 @@
 package de.loosecoupling.assignment3.wholesaler.configuration;
 
+import javax.jms.DeliveryMode;
 import javax.jms.JMSException;
 import javax.jms.Session;
 import javax.jms.TemporaryTopic;
@@ -65,7 +66,9 @@ public class JmsConfig {
 	
 	@Bean
 	public TopicPublisher topicPublisher(TopicSession activeMQSession, Topic hotDealsTopic) throws JMSException {
-		return activeMQSession.createPublisher(hotDealsTopic);
+		TopicPublisher publisher = activeMQSession.createPublisher(hotDealsTopic);
+		publisher.setDeliveryMode(DeliveryMode.PERSISTENT);
+		return publisher;
 	}
 	
 	@Bean
